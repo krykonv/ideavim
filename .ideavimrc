@@ -1,0 +1,147 @@
+let mapleader = " " " Set leader key
+let maplocalleader = " "
+
+"---------- plugins ----------
+Plug 'preservim/nerdtree'
+nmap <c-n>t :NERDTreeToggle<CR>
+nmap <c-n>c :NERDTreeFocus<CR>
+":NERDTreeFocus
+":NERDTreeToggle
+":NERDTreeFind
+":NERDTreeRefreshRoot
+" Open NERDTree at current file
+nmap <c-n>f :NERDTreeFind<CR>
+
+Plug 'easymotion/vim-easymotion'
+nmap <Leader>J <Plug>(easymotion-s)
+nmap <Leader>j <Plug>(easymotion-f)
+
+set which-key
+
+""" Idea specific settings ------------------
+set ideajoin
+
+
+""" Strict mode for development ---------------
+set ideastrictmode
+
+" ----- Global -----
+set ignorecase
+set incsearch
+set nohlsearch
+set noshowcmd
+set number
+set relativenumber
+set smartcase
+set scrolloff=7
+set sidescrolloff=8
+set history=500
+set clipboard=unnamed
+syntax enable
+syntax on
+set nowrap
+set easymotion
+set notimeout
+set peekaboo
+
+" In insert or command mode, move by using Ctrl
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+" Put r and x into the black hole register
+nnoremap r "_r
+xnoremap r "_r
+nnoremap x "_x
+xnoremap x "_x
+
+" Stay in indent mode
+vnoremap < <gv
+vnoremap > >gv
+
+" Keep last yanked when pasting
+vnoremap p "_dP
+
+" Disable highlight when <leader><leader> is pressed
+nnoremap <leader><leader> :noh<CR>
+
+" Goto
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap ge :action GotoNextError<CR>
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gt :action GotoTypeDeclaration<CR>
+nnoremap gu :action GotoDeclaration<CR>
+nnoremap gz :action GotoTest<CR>
+nnoremap gs :action GotoSuperMethod<CR>
+nnoremap ]] :action MethodDown<CR>
+nnoremap [[ :action MethodUp<CR>
+
+" Terminal
+nnoremap <leader>tt :action ActivateTerminalToolWindow<CR>
+
+" Window
+" nnoremap <Leader>ww <C-W>w
+" nnoremap <Leader>wd <C-W>c
+" nnoremap <Leader>wj <C-W>j
+" nnoremap <Leader>wk <C-W>k
+" nnoremap <Leader>wh <C-W>h
+" nnoremap <Leader>wl <C-W>l
+" nnoremap <Leader>ws <C-W>s
+" nnoremap <Leader>wv <C-W>v
+nnoremap <leader>wv :action SplitVertically<CR>
+nnoremap <leader>wh :action SplitHorizontally<CR>
+nnoremap <leader>wm :action MoveEditorToOppositeTabGroup<CR>
+nnoremap <S-TAB> :action PreviousTab<CR>
+nnoremap <TAB> :action NextTab<CR>
+
+" Debugging
+nnoremap <leader>dc :action Debug<cr>
+nnoremap <leader>ds :action Stop<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+
+" Run
+nnoremap <leader>rc :action ContextRun<CR>
+nnoremap <leader>rx :action ChooseRunConfiguration<CR>
+nnoremap <leader>rr :action Rerun<CR>
+nnoremap <leader>rt :action RunTests<CR>
+nnoremap <leader>rs :action Stop<CR>
+
+" Show
+nnoremap <Leader>sd :action ShowUmlDiagram<CR>
+nnoremap <Leader>th :action TypeHierarchy<CR>
+nnoremap <Leader>fu :action FindUsages<CR>
+nnoremap <Leader>su :action ShowUsages<CR>
+nnoremap <Leader>mh :action MethodHierarchy<CR>
+nnoremap <Leader>ss :action ShowSettings<CR>
+nnoremap <leader>sh :action ShowHoverInfo<CR>
+nnoremap <Leader>sp :action ShowFilePath<CR>
+nnoremap <Leader>se :action ShowErrorDescription<CR>
+nnoremap <Leader>rf :action RecentFiles<CR>
+nnoremap <leader>a :action Annotate<CR>
+nnoremap <leader>sn :action ShowNavBar<CR>
+
+" Fix
+nnoremap <Leader>re :action RenameElement<CR>
+nnoremap <Leader>rf :action RenameFile<CR>
+nnoremap <Leader>fc :action ReformatCode<CR>
+
+" Popup
+nnoremap <Leader>ps :action FileStructurePopup<CR>
+nnoremap <leader>pg :action Generate<CR>
+nnoremap <Leader>pm :action ShowPopupMenu<CR>
+
+" Disable highlight when <leader><leader> is pressed
+nnoremap <leader><leader> :noh<CR>
+
+" Find and center
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Vertical scroll and center
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
