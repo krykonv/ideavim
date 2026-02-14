@@ -3,18 +3,18 @@ let maplocalleader = " "
 
 "---------- plugins ----------
 Plug 'preservim/nerdtree'
-nmap <c-n>t :NERDTreeToggle<CR>
-nmap <c-n>c :NERDTreeFocus<CR>
+nmap nt :NERDTreeToggle<CR>
+nmap nc :NERDTreeFocus<CR>
 ":NERDTreeFocus
 ":NERDTreeToggle
 ":NERDTreeFind
 ":NERDTreeRefreshRoot
 " Open NERDTree at current file
-nmap <c-n>f :NERDTreeFind<CR>
+nmap nf :NERDTreeFind<CR>
 
 Plug 'easymotion/vim-easymotion'
-nmap <Leader>J <Plug>(easymotion-s)
-nmap <Leader>j <Plug>(easymotion-f)
+nmap <leader>J <Plug>(easymotion-s)
+nmap <leader>j <Plug>(easymotion-f)
 
 set which-key
 
@@ -26,6 +26,9 @@ set ideajoin
 set ideastrictmode
 
 " ----- Global -----
+syntax enable
+syntax on
+set clipboard=
 set ignorecase
 set incsearch
 set nohlsearch
@@ -36,13 +39,14 @@ set smartcase
 set scrolloff=7
 set sidescrolloff=8
 set history=500
-set clipboard=unnamed
-syntax enable
-syntax on
 set nowrap
 set easymotion
 set notimeout
+let g:WhichKey_ShowVimActions = "true"
 set peekaboo
+set multiple-cursors
+set highlightedyank
+set matchit
 
 " In insert or command mode, move by using Ctrl
 cnoremap <C-h> <Left>
@@ -111,29 +115,31 @@ nnoremap <leader>rr :action Rerun<CR>
 nnoremap <leader>rt :action RunTests<CR>
 nnoremap <leader>rs :action Stop<CR>
 
-" Show
-nnoremap <Leader>sd :action ShowUmlDiagram<CR>
-nnoremap <Leader>th :action TypeHierarchy<CR>
-nnoremap <Leader>fu :action FindUsages<CR>
-nnoremap <Leader>su :action ShowUsages<CR>
-nnoremap <Leader>mh :action MethodHierarchy<CR>
-nnoremap <Leader>ss :action ShowSettings<CR>
-nnoremap <leader>sh :action ShowHoverInfo<CR>
-nnoremap <Leader>sp :action ShowFilePath<CR>
-nnoremap <Leader>se :action ShowErrorDescription<CR>
-nnoremap <Leader>rf :action RecentFiles<CR>
-nnoremap <leader>a :action Annotate<CR>
-nnoremap <leader>sn :action ShowNavBar<CR>
-
 " Fix
 nnoremap <Leader>re :action RenameElement<CR>
 nnoremap <Leader>rf :action RenameFile<CR>
-nnoremap <Leader>fc :action ReformatCode<CR>
 
-" Popup
-nnoremap <Leader>ps :action FileStructurePopup<CR>
-nnoremap <leader>pg :action Generate<CR>
-nnoremap <Leader>pm :action ShowPopupMenu<CR>
+" Show
+nnoremap <leader>sh :action ShowHoverInfo<CR>
+nnoremap <leader>ss :action FileStructurePopup<CR>
+nnoremap <leader>sm :action ShowPopupMenu<CR>
+nnoremap <leader>sus :action ShowUsages<CR>
+nnoremap <leader>suf :action FindUsages<CR>
+nnoremap <leader>sp :action ShowFilePath<CR>
+nnoremap <leader>sr :action RecentFiles<CR>
+nnoremap <leader>sa :action Annotate<CR>
+nnoremap <leader>st :action TypeHierarchy<CR>
+nnoremap <leader>sc :action LocalHistory.ShowHistory<CR>
+
+" Actions
+nnoremap <leader>ae :action ExtractMethod<CR>
+vnoremap <leader>ae :action ExtractMethod<CR>
+nnoremap <leader>az :action ToggleDistractionFreeMode<CR>
+nnoremap <leader>ao :action CloseAllEditorsButActive<CR>
+nnoremap <leader>ac :action CheckinProject<CR>
+nnoremap <leader>ah :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>al :source ~/.ideavimrc<CR>
+
 
 " Disable highlight when <leader><leader> is pressed
 nnoremap <leader><leader> :noh<CR>
@@ -145,3 +151,18 @@ nnoremap N Nzzzv
 " Vertical scroll and center
 nnoremap <silent> <C-d> <C-d>zz
 nnoremap <silent> <C-u> <C-u>zz
+
+" Copy Reference
+nnoremap <leader>cr :action CopyReference<CR>
+
+" Remap multiple-cursors shortcuts to match terryma/vim-multiple-cursors
+nmap <C-n> <Plug>NextOccurrence
+xmap <C-n> <Plug>NextOccurrence
+xmap <C-x> <Plug>SkipOccurrence
+xmap <C-p> <Plug>RemoveOccurrence
+" Note that the default <A-n> and g<A-n> shortcuts don't work on Mac due to dead keys.
+" <A-n> is used to enter accented text e.g. ñ
+nmap <leader><C-n> <Plug>AllWholeOccurrences
+xmap <leader><C-n> <Plug>AllWholeOccurrences
+nmap <leader>g<C-n> <Plug>AllOccurrences
+xmap <leader>g<C-n> <Plug>AllOccurrences
