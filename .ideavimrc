@@ -13,8 +13,7 @@ nmap nc :NERDTreeFocus<CR>
 nmap nf :NERDTreeFind<CR>
 
 Plug 'easymotion/vim-easymotion'
-nmap <leader>J <Plug>(easymotion-s)
-nmap <leader>j <Plug>(easymotion-f)
+nmap <leader>j <Plug>(easymotion-s)
 
 set which-key
 
